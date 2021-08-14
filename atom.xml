@@ -8,7 +8,7 @@
     <author>
       <name>teapus</name>
     </author>
-    <updated>2021-08-14T03:24:05.204Z</updated>
+    <updated>2021-08-14T10:08:00.000Z</updated>
     <category term=".Net" />
     <entry>
         <id>https://pustea-wls.github.io/2021/08/14/hello-world/</id>
@@ -33,6 +33,173 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvb25lLWNvbW1hbmQtZGVwbG95bWVudC5odG1s&#34;&gt;Deployment&lt;/span&gt;&lt;/p&gt;
 </content>
-        <updated>2021-08-14T03:24:05.204Z</updated>
+        <category term="Net" scheme="https://pustea-wls.github.io/categories/Net/" />
+        <updated>2021-08-14T10:08:00.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://pustea-wls.github.io/2021/08/14/Net/Net5/</id>
+        <title>如何在Asp.net Core启动的时候，操作数据库</title>
+        <link rel="alternate" href="https://pustea-wls.github.io/2021/08/14/Net/Net5/"/>
+        <content type="html">&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3huLS1Bc3AtbHA2ZTk3M2Vzbng5d2RzNDdjLm5ldA==&#34;&gt;最近在研究 Asp.net&lt;/span&gt; Core 基于 JWT 授权码模式去实现策略授权 (根据用户的角色动态判断是否拥有对访问接口的权限). 在完成 jwt 的授权码和模拟用户，角色等数据后，想着去在策略授权的时候直接去访问数据库的数据。发现这并不容易。查找一些资料后&lt;/p&gt;
+&lt;h3 id=&#34;核心代码&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#核心代码&#34;&gt;#&lt;/a&gt; 核心代码&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;             //连接字符串
+            services.AddDbContext&amp;lt;JWTContext&amp;gt;(options =&amp;gt;
+            options.UseSqlServer(Configuration.GetConnectionString(&amp;quot;JWTDBConnection&amp;quot;)));
+
+            services.AddScoped&amp;lt;IAppSettings, AppSettings&amp;gt;();
+
+            //读取数据库配置策略授权(重点)
+            services.AddOptions&amp;lt;AuthorizationOptions&amp;gt;().Configure&amp;lt;IServiceScopeFactory&amp;gt;((options, sp) =&amp;gt;
+            &amp;#123;
+              using (var scope = sp.CreateScope())
+           &amp;#123;
+              IAppSettings settings = scope.ServiceProvider.GetRequiredService&amp;lt;IAppSettings&amp;gt;();
+              var Permission = settings.userPermissions();
+              options.AddPolicy(&amp;quot;Permission&amp;quot;, policy =&amp;gt; policy.Requirements.Add(Permission));
+           &amp;#125;
+           &amp;#125;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看上面的代码我们可以发现，在连接数据的下面。我们让容器中注入了一个服务:&lt;br /&gt;
+[services.AddScoped&amp;lt;IAppSettings, AppSettings&amp;gt;();]&lt;/p&gt;
+&lt;h3 id=&#34;定义接口&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#定义接口&#34;&gt;#&lt;/a&gt; 定义接口&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt; public interface IAppSettings  
+ &amp;#123;  
+      PolicyRequirement userPermissions();  
+ &amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;实现接口&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#实现接口&#34;&gt;#&lt;/a&gt; 实现接口&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;public class AppSettings:IAppSettings
+    &amp;#123;
+        public JWTContext context;
+
+        public AppSettings(JWTContext context)
+        &amp;#123;
+            this.context = context;
+        &amp;#125;
+
+        public PolicyRequirement userPermissions()
+        &amp;#123;
+            PolicyRequirement policyRequirement = new PolicyRequirement();
+
+            var _jWTContext = context;
+            var perssions = _jWTContext.permssions;
+            var roles = _jWTContext.roles;
+            policyRequirement.DeniedAction = new PathString(&amp;quot;/api/nopermission&amp;quot;);
+            policyRequirement.UserPermissions = (from r in roles
+                               join p in perssions
+                               on r.Id equals p.RoleId
+                               select new UserPermission
+                               &amp;#123;
+                                   UserName = r.Name,
+                                   Url = &amp;quot;/WeatherForecast&amp;quot; + p.Permssions
+                               &amp;#125;).ToList();
+
+
+            return policyRequirement;
+        &amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;策略授权的核心代码&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#策略授权的核心代码&#34;&gt;#&lt;/a&gt; 策略授权的核心代码&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;public class PolicyRequirement: IAuthorizationRequirement
+    &amp;#123;
+
+        /// &amp;lt;summary&amp;gt;
+        /// 用户权限集合
+        /// &amp;lt;/summary&amp;gt;
+        public List&amp;lt;UserPermission&amp;gt; UserPermissions &amp;#123; get;  set; &amp;#125;
+        /// &amp;lt;summary&amp;gt;
+        /// 无权限action
+        /// &amp;lt;/summary&amp;gt;
+        public string DeniedAction &amp;#123; get; set; &amp;#125;
+        /// &amp;lt;summary&amp;gt;
+        /// 构造
+        /// &amp;lt;/summary&amp;gt;
+        public PolicyRequirement()
+        &amp;#123;
+
+            //没有权限则跳转到这个路由
+            DeniedAction = new PathString(&amp;quot;/api/nopermission&amp;quot;);
+            //用户有权限访问的路由配置,当然可以从数据库获取
+            UserPermissions = new List&amp;lt;UserPermission&amp;gt; &amp;#123;
+                              new UserPermission &amp;#123;  Url=&amp;quot;/WeatherForecast/Tourist&amp;quot;, UserName=&amp;quot;user&amp;quot;&amp;#125;,
+                          &amp;#125;;
+        &amp;#125;
+    &amp;#125;
+
+
+
+    /// &amp;lt;summary&amp;gt;
+    /// 用户权限承载实体
+    /// &amp;lt;/summary&amp;gt;
+    public class UserPermission
+    &amp;#123;
+        /// &amp;lt;summary&amp;gt;
+        /// 用户名
+        /// &amp;lt;/summary&amp;gt;
+        public string UserName &amp;#123; get; set; &amp;#125;
+        /// &amp;lt;summary&amp;gt;
+        /// 请求Url
+        /// &amp;lt;/summary&amp;gt;
+        public string Url &amp;#123; get; set; &amp;#125;
+    &amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;public class PolicyHandler : AuthorizationHandler&amp;lt;PolicyRequirement&amp;gt;
+    &amp;#123;
+
+
+        protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, PolicyRequirement requirement)
+        &amp;#123;
+            //var httpContext = ((context.Resource) as Microsoft.AspNetCore.Routing.RouteEndpoint);
+            //dynamic httpContext = context.Resource;
+
+            var httpContext = context.Resource as HttpContext;
+
+            var questUrl = httpContext.Request.Path.Value;
+
+            //赋值用户权限
+            var userPermissions = requirement.UserPermissions;
+            //是否经过验证
+            var isAuthenticated = context.User.Identity.IsAuthenticated;
+
+            if (isAuthenticated)
+            &amp;#123;
+                if (userPermissions.GroupBy(g =&amp;gt; g.Url).Any(w =&amp;gt; w.Key == questUrl))
+                &amp;#123;
+                    //用户名
+                    var userName = context.User.Claims.Where(x=&amp;gt;x.Type==&amp;quot;roless&amp;quot;).First().Value;
+                    if (userPermissions.Any(w =&amp;gt; w.UserName == userName &amp;amp;&amp;amp; w.Url== questUrl))
+                    &amp;#123;
+                        context.Succeed(requirement);
+                    &amp;#125;
+                    else
+                    &amp;#123;
+                        //无权限跳转到拒绝页面
+                        //context.Fail();
+                        //httpContext.Response.Redirect(&amp;quot;https://localhost:5001/api/nopermission&amp;quot;);
+                        context.Fail();
+                        var Response = httpContext.Response;
+                        var message = Encoding.UTF8.GetBytes(&amp;quot;User with Super Admin role cannot be edited&amp;quot;);
+
+                        Response.OnStarting(async () =&amp;gt;
+                        &amp;#123;
+                            httpContext.Response.StatusCode = 429;
+                            await Response.Body.WriteAsync(message, 0, message.Length);
+                        &amp;#125;);
+                    &amp;#125;
+                &amp;#125;
+                else
+                &amp;#123;
+                    context.Succeed(requirement);
+                &amp;#125;
+
+            &amp;#125;
+            return Task.CompletedTask;
+        &amp;#125;
+    &amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+        <category term="Net" scheme="https://pustea-wls.github.io/categories/Net/" />
+        <category term="Net" scheme="https://pustea-wls.github.io/tags/Net/" />
+        <category term="Asp.net Core" scheme="https://pustea-wls.github.io/tags/Asp-net-Core/" />
+        <updated>2021-08-14T10:08:00.000Z</updated>
     </entry>
 </feed>
