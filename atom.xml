@@ -6,9 +6,10 @@
     <icon>https://pustea-wls.github.io/images/favicon.ico</icon>
     <link href="https://pustea-wls.github.io" />
     <author>
-      <name>Jteapus</name>
+      <name>teapus</name>
     </author>
     <updated>2021-08-14T03:24:05.204Z</updated>
+    <category term=".Net" />
     <entry>
         <id>https://pustea-wls.github.io/2021/08/14/hello-world/</id>
         <title>Hello World</title>
