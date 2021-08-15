@@ -11,15 +11,6 @@
     <updated>2021-08-14T10:08:00.000Z</updated>
     <category term=".Net" />
     <entry>
-        <id>https://pustea-wls.github.io/2021/08/14/hello-world/</id>
-        <title>Hello World</title>
-        <link rel="alternate" href="https://pustea-wls.github.io/2021/08/14/hello-world/"/>
-        <content type="html">&lt;p&gt;&lt;code&gt;I can do all things&lt;/code&gt;&lt;/p&gt;
-</content>
-        <category term="Net" scheme="https://pustea-wls.github.io/categories/Net/" />
-        <updated>2021-08-14T10:08:00.000Z</updated>
-    </entry>
-    <entry>
         <id>https://pustea-wls.github.io/2021/08/14/Net/Net5/</id>
         <title>如何在Asp.net Core启动的时候，操作数据库</title>
         <link rel="alternate" href="https://pustea-wls.github.io/2021/08/14/Net/Net5/"/>
@@ -34,6 +25,15 @@
         <category term="Net" scheme="https://pustea-wls.github.io/categories/Net/" />
         <category term="Net" scheme="https://pustea-wls.github.io/tags/Net/" />
         <category term="Asp.net Core" scheme="https://pustea-wls.github.io/tags/Asp-net-Core/" />
+        <updated>2021-08-14T10:08:00.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://pustea-wls.github.io/2021/08/14/hello-world/</id>
+        <title>Hello World</title>
+        <link rel="alternate" href="https://pustea-wls.github.io/2021/08/14/hello-world/"/>
+        <content type="html">&lt;p&gt;&lt;code&gt;I can do all things&lt;/code&gt;&lt;/p&gt;
+</content>
+        <category term="Net" scheme="https://pustea-wls.github.io/categories/Net/" />
         <updated>2021-08-14T10:08:00.000Z</updated>
     </entry>
 </feed>
