@@ -29,7 +29,8 @@
 &lt;h6 id=&#34;生成一个镜像&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#生成一个镜像&#34;&gt;#&lt;/a&gt; 生成一个镜像&lt;/h6&gt;
 &lt;figure class=&#34;highlight raw&#34;&gt;&lt;figcaption data-lang=&#34;&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;docker build -t aspnetcore:v1&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;在这命令就踩了很多坑，最后发现默认生成的 DockFile 文件是在当前这个文件夹下面 (这边没有我已经将他去除)&lt;br /&gt;
 &lt;img data-src=&#34;2.jpg&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
- &lt;code&gt;我们将DockerFile文件向上移动一级和.sln文件同级&lt;/code&gt; 这样就可以成功了&lt;/p&gt;
+ &lt;code&gt;我们将DockerFile文件向上移动一级和.sln文件同级&lt;/code&gt; 这样就可以成功了&lt;br /&gt;
+&lt;img data-src=&#34;7.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 &lt;h6 id=&#34;运行一个容器&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#运行一个容器&#34;&gt;#&lt;/a&gt; 运行一个容器&lt;/h6&gt;
 &lt;figure class=&#34;highlight raw&#34;&gt;&lt;figcaption data-lang=&#34;&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;docker run -d -p 8000:80 --name aspnetcoreclient aspnetcore:v1&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;本地运行成功&lt;br /&gt;
 &lt;img data-src=&#34;3.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
@@ -40,7 +41,7 @@
 &lt;figure class=&#34;highlight raw&#34;&gt;&lt;figcaption data-lang=&#34;&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;yum install -y lrzsz&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h6 id=&#34;如何将本地文件上传到服务器上windows上传到linux&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#如何将本地文件上传到服务器上windows上传到linux&#34;&gt;#&lt;/a&gt; 如何将本地文件上传到服务器上 (windows 上传到 Linux)&lt;/h6&gt;
 &lt;p&gt;在这里我连接服务器的软件是 Xshell 6&lt;br /&gt;
 &lt;img data-src=&#34;4.jpg&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
- 将要上传的文件夹压缩后皆可以上传了&lt;br /&gt;
+ 将要上传的文件夹压缩后就可以上传了&lt;br /&gt;
 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vcXRpZ2VyL3AvMTM4NDYwNzAuaHRtbA==&#34;&gt;具体的操作流程&lt;/span&gt;&lt;br /&gt;
 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vcXRpZ2VyL3AvMTM4NDcyNDUuaHRtbA==&#34;&gt; Linux 服务器上安装解压 rar 安装包操作步骤&lt;/span&gt;&lt;br /&gt;
 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1JhaW5ubmJvdy9hcnRpY2xlL2RldGFpbHMvNTA0MjA2MDQ=&#34;&gt; Linux 文件基本命令&lt;/span&gt;&lt;/p&gt;
