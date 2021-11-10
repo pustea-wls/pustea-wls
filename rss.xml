@@ -10,9 +10,47 @@
         </author>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Mon, 30 Aug 2021 08:37:49 +0800</pubDate>
-        <lastBuildDate>Mon, 30 Aug 2021 08:37:49 +0800</lastBuildDate>
+        <pubDate>Wed, 10 Nov 2021 15:00:00 +0800</pubDate>
+        <lastBuildDate>Wed, 10 Nov 2021 15:00:00 +0800</lastBuildDate>
         <category term=".Net" />
+        <item>
+            <guid isPermalink="true">https://pustea-wls.github.io/2021/11/10/aspnetcore%E9%83%A8%E7%BD%B2%E5%88%B0linux/</guid>
+            <title>将aspnetcore项目部署到Centos8</title>
+            <link>https://pustea-wls.github.io/2021/11/10/aspnetcore%E9%83%A8%E7%BD%B2%E5%88%B0linux/</link>
+            <category term="Docker" scheme="https://pustea-wls.github.io/categories/Docker/" />
+            <category term="Docker" scheme="https://pustea-wls.github.io/tags/Docker/" />
+            <pubDate>Wed, 10 Nov 2021 15:00:00 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;&lt;code&gt;aspNetCore 跨平台之后，自己弄了一台Linux服务器。想着部署到上面试试看。作为之前从未接触Linux的小白。一番折腾可不容易，记录下方便以后查阅&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;使用docker生成镜像后部署&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#使用docker生成镜像后部署&#34;&gt;#&lt;/a&gt; 使用 Docker 生成镜像后部署&lt;/h2&gt;
+&lt;p&gt;我当前的这台服务器的版本是 &lt;code&gt;Centos8.3&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;1. 首先我们打开自己要部署的项目，使用 vs 生成一个 DockerFile 文件&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;1.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;因为我本地也已经安装过 Docker 了，所以我现在本地尝试一下&lt;/p&gt;
+&lt;h6 id=&#34;生成一个镜像&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#生成一个镜像&#34;&gt;#&lt;/a&gt; 生成一个镜像&lt;/h6&gt;
+&lt;figure class=&#34;highlight raw&#34;&gt;&lt;figcaption data-lang=&#34;&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;docker build -t aspnetcore:v1&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;在这命令就踩了很多坑，最后发现默认生成的 DockFile 文件是在当前这个文件夹下面 (这边没有我已经将他去除)&lt;br /&gt;
+&lt;img data-src=&#34;2.jpg&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
+ &lt;code&gt;我们将DockerFile文件向上移动一级和.sln文件同级&lt;/code&gt; 这样就可以成功了&lt;/p&gt;
+&lt;h6 id=&#34;运行一个容器&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#运行一个容器&#34;&gt;#&lt;/a&gt; 运行一个容器&lt;/h6&gt;
+&lt;figure class=&#34;highlight raw&#34;&gt;&lt;figcaption data-lang=&#34;&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;docker run -d -p 8000:80 --name aspnetcoreclient aspnetcore:v1&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;本地运行成功&lt;br /&gt;
+&lt;img data-src=&#34;3.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;部署到linux服务器上&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#部署到linux服务器上&#34;&gt;#&lt;/a&gt; 部署到 Linux 服务器上&lt;/h2&gt;
+&lt;p&gt;作为一个 Linux 小白一些命令只能从基础学起&lt;/p&gt;
+&lt;h3 id=&#34;以下一些命令需要你已经安装了docker&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#以下一些命令需要你已经安装了docker&#34;&gt;#&lt;/a&gt; 以下一些命令需要你已经安装了 Docker&lt;/h3&gt;
+&lt;h6 id=&#34;linux安装-lrzsz下载文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#linux安装-lrzsz下载文件&#34;&gt;#&lt;/a&gt; Linux 安装 lrzsz (下载文件)&lt;/h6&gt;
+&lt;figure class=&#34;highlight raw&#34;&gt;&lt;figcaption data-lang=&#34;&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;yum install -y lrzsz&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h6 id=&#34;如何将本地文件上传到服务器上windows上传到linux&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#如何将本地文件上传到服务器上windows上传到linux&#34;&gt;#&lt;/a&gt; 如何将本地文件上传到服务器上 (windows 上传到 Linux)&lt;/h6&gt;
+&lt;p&gt;在这里我连接服务器的软件是 Xshell 6&lt;br /&gt;
+&lt;img data-src=&#34;4.jpg&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
+ 将要上传的文件夹压缩后皆可以上传了&lt;br /&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vcXRpZ2VyL3AvMTM4NDYwNzAuaHRtbA==&#34;&gt;具体的操作流程&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vcXRpZ2VyL3AvMTM4NDcyNDUuaHRtbA==&#34;&gt; Linux 服务器上安装解压 rar 安装包操作步骤&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1JhaW5ubmJvdy9hcnRpY2xlL2RldGFpbHMvNTA0MjA2MDQ=&#34;&gt; Linux 文件基本命令&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;在 Linux 执行命令后&lt;br /&gt;
+&lt;img data-src=&#34;5.jpg&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
+当前是执行在 80 端口&lt;br /&gt;
+&lt;img data-src=&#34;6.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这就是一个最简单的 asp.netCore 的发布到 Linux 的过程&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://pustea-wls.github.io/2021/08/30/Iview%E4%B8%AD%E7%9A%84tree%E7%BB%84%E4%BB%B6/</guid>
             <title>使用递归遍历树形菜单下面的所有子节点</title>
