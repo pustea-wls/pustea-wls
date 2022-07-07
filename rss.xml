@@ -159,7 +159,8 @@
             <guid isPermalink="true">https://pustea-wls.github.io/2021/08/14/hello-world/</guid>
             <title>Hello World</title>
             <link>https://pustea-wls.github.io/2021/08/14/hello-world/</link>
-            <category term="Net" scheme="https://pustea-wls.github.io/categories/Net/" />
+            <category term="Others" scheme="https://pustea-wls.github.io/categories/Others/" />
+            <category term="Others" scheme="https://pustea-wls.github.io/tags/Others/" />
             <pubDate>Sat, 14 Aug 2021 18:08:00 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;&lt;code&gt;I can do all things&lt;/code&gt;&lt;/p&gt;
  ]]></description>
