@@ -8,8 +8,36 @@
     <author>
       <name>teapus</name>
     </author>
-    <updated>2022-07-14T07:00:00.000Z</updated>
+    <updated>2022-08-02T02:00:00.000Z</updated>
     <category term=".Net" />
+    <entry>
+        <id>https://pustea-wls.github.io/2022/08/02/nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1aspnetcore/</id>
+        <title>nginx负载均衡aspnetcore</title>
+        <link rel="alternate" href="https://pustea-wls.github.io/2022/08/02/nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1aspnetcore/"/>
+        <content type="html">&lt;h2 id=&#34;使用docker部署两个aspnetcore项目&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#使用docker部署两个aspnetcore项目&#34;&gt;#&lt;/a&gt; 使用 Docker 部署两个 aspnetcore 项目&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://pustea-wls.github.io/pustea-wls/2021/11/10/aspnetcore%E9%83%A8%E7%BD%B2%E5%88%B0linux/&#34;&gt;docker 部署 aspnetcore 项目&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;两个项目已经部署好了&lt;br /&gt;
+&lt;img data-src=&#34;1.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;使用docker部署nginx&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#使用docker部署nginx&#34;&gt;#&lt;/a&gt; 使用 Docker 部署 Nginx&lt;/h2&gt;
+&lt;h3 id=&#34;拉取nginx镜像&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#拉取nginx镜像&#34;&gt;#&lt;/a&gt; 拉取 nginx 镜像&lt;/h3&gt;
+&lt;figure class=&#34;highlight raw&#34;&gt;&lt;figcaption data-lang=&#34;&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;docker pull nginx:latest&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;运行容器&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#运行容器&#34;&gt;#&lt;/a&gt; 运行容器&lt;/h3&gt;
+&lt;figure class=&#34;highlight raw&#34;&gt;&lt;figcaption data-lang=&#34;&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;docker run --name mynginx -p 8889:80 -d nginx&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;img data-src=&#34;2.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;nginx配置负载均衡&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#nginx配置负载均衡&#34;&gt;#&lt;/a&gt; Nginx 配置负载均衡&lt;/h2&gt;
+&lt;h3 id=&#34;将nginx容器内部的配置文件复制到linux本地&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#将nginx容器内部的配置文件复制到linux本地&#34;&gt;#&lt;/a&gt; 将 nginx 容器内部的配置文件复制到 linux 本地&lt;/h3&gt;
+&lt;figure class=&#34;highlight raw&#34;&gt;&lt;figcaption data-lang=&#34;&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;docker cp 容器名：要拷贝的文件在容器里面的路径  要拷贝到宿主机的相应路径 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;docker cp mynginx:&amp;#x2F;etc&amp;#x2F;nginx&amp;#x2F;conf.d&amp;#x2F;root&amp;#x2F;advanced&amp;#x2F;nginx&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;docker cp mynginx:&amp;#x2F;etc&amp;#x2F;nginx&amp;#x2F;nginx.conf&amp;#x2F;root&amp;#x2F;advanced&amp;#x2F;nginx&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;img data-src=&#34;3.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;将confd文件夹下面的defaultconf进行修改&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#将confd文件夹下面的defaultconf进行修改&#34;&gt;#&lt;/a&gt; 将 conf.d 文件夹下面的 default.conf 进行修改&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;4.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;重新运行nginx容器&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#重新运行nginx容器&#34;&gt;#&lt;/a&gt; 重新运行 nginx 容器&lt;/h3&gt;
+&lt;p&gt;将之前的 nginx 删除&lt;/p&gt;
+&lt;figure class=&#34;highlight raw&#34;&gt;&lt;figcaption data-lang=&#34;&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;docker kill mynginx -- 杀死 mynginx&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;docker rm mynginx   -- 删除 mynginx&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;code&gt;将本地配置文件映射到nginx容器&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight raw&#34;&gt;&lt;figcaption data-lang=&#34;&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;docker run -d --name mynginx -p 8889:80 -v &amp;#x2F;root&amp;#x2F;advanced&amp;#x2F;nginx&amp;#x2F;conf.d:&amp;#x2F;etc&amp;#x2F;nginx&amp;#x2F;conf.d -v &amp;#x2F;root&amp;#x2F;advanced&amp;#x2F;nginx&amp;#x2F;nginx.conf:&amp;#x2F;etc&amp;#x2F;nginx&amp;#x2F;nginx.conf --privileged&amp;#x3D;true nginx&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;video id=&#34;mmedia-OILrmMoKexHMSRBg&#34; controls=true vide=&#34;video&#34; src=&#34;https://1251316161.vod2.myqcloud.com/007a649dvodcq1251316161/18cb667f5285890807929994651/xBwYyNhF3CkA.mp4&#34; width=&#34;100%&#34; &gt;&lt;/video&gt;&lt;/p&gt;
+</content>
+        <category term="Nginx" scheme="https://pustea-wls.github.io/categories/Nginx/" />
+        <category term="Asp.net Core" scheme="https://pustea-wls.github.io/tags/Asp-net-Core/" />
+        <category term="Docker" scheme="https://pustea-wls.github.io/tags/Docker/" />
+        <category term="Nginx" scheme="https://pustea-wls.github.io/tags/Nginx/" />
+        <updated>2022-08-02T02:00:00.000Z</updated>
+    </entry>
     <entry>
         <id>https://pustea-wls.github.io/2022/07/14/aspnetcore%E8%BF%87%E6%BB%A4%E5%99%A8%E4%B9%8BAuthorizationFilter/</id>
         <title>aspnetcore过滤器系列五：AuthorizationFilter</title>

@@ -7,6 +7,19 @@
     "home_page_url": "https://pustea-wls.github.io",
     "items": [
         {
+            "id": "https://pustea-wls.github.io/2022/08/02/nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1aspnetcore/",
+            "url": "https://pustea-wls.github.io/2022/08/02/nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1aspnetcore/",
+            "title": "nginx负载均衡aspnetcore",
+            "date_published": "2022-08-02T02:00:00.000Z",
+            "content_html": "<h2 id=\"使用docker部署两个aspnetcore项目\"><a class=\"anchor\" href=\"#使用docker部署两个aspnetcore项目\">#</a> 使用 Docker 部署两个 aspnetcore 项目</h2>\n<p><a href=\"https://pustea-wls.github.io/pustea-wls/2021/11/10/aspnetcore%E9%83%A8%E7%BD%B2%E5%88%B0linux/\">docker 部署 aspnetcore 项目</a></p>\n<p>两个项目已经部署好了<br />\n<img data-src=\"1.jpg\" alt=\"\" /></p>\n<h2 id=\"使用docker部署nginx\"><a class=\"anchor\" href=\"#使用docker部署nginx\">#</a> 使用 Docker 部署 Nginx</h2>\n<h3 id=\"拉取nginx镜像\"><a class=\"anchor\" href=\"#拉取nginx镜像\">#</a> 拉取 nginx 镜像</h3>\n<figure class=\"highlight raw\"><figcaption data-lang=\"\"></figcaption><table><tr><td data-num=\"1\"></td><td><pre>docker pull nginx:latest</pre></td></tr></table></figure><h3 id=\"运行容器\"><a class=\"anchor\" href=\"#运行容器\">#</a> 运行容器</h3>\n<figure class=\"highlight raw\"><figcaption data-lang=\"\"></figcaption><table><tr><td data-num=\"1\"></td><td><pre>docker run --name mynginx -p 8889:80 -d nginx</pre></td></tr></table></figure><p><img data-src=\"2.jpg\" alt=\"\" /></p>\n<h2 id=\"nginx配置负载均衡\"><a class=\"anchor\" href=\"#nginx配置负载均衡\">#</a> Nginx 配置负载均衡</h2>\n<h3 id=\"将nginx容器内部的配置文件复制到linux本地\"><a class=\"anchor\" href=\"#将nginx容器内部的配置文件复制到linux本地\">#</a> 将 nginx 容器内部的配置文件复制到 linux 本地</h3>\n<figure class=\"highlight raw\"><figcaption data-lang=\"\"></figcaption><table><tr><td data-num=\"1\"></td><td><pre>docker cp 容器名：要拷贝的文件在容器里面的路径  要拷贝到宿主机的相应路径 </pre></td></tr><tr><td data-num=\"2\"></td><td><pre>docker cp mynginx:&#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;root&#x2F;advanced&#x2F;nginx</pre></td></tr><tr><td data-num=\"3\"></td><td><pre>docker cp mynginx:&#x2F;etc&#x2F;nginx&#x2F;nginx.conf&#x2F;root&#x2F;advanced&#x2F;nginx</pre></td></tr></table></figure><p><img data-src=\"3.jpg\" alt=\"\" /></p>\n<h3 id=\"将confd文件夹下面的defaultconf进行修改\"><a class=\"anchor\" href=\"#将confd文件夹下面的defaultconf进行修改\">#</a> 将 conf.d 文件夹下面的 default.conf 进行修改</h3>\n<p><img data-src=\"4.jpg\" alt=\"\" /></p>\n<h3 id=\"重新运行nginx容器\"><a class=\"anchor\" href=\"#重新运行nginx容器\">#</a> 重新运行 nginx 容器</h3>\n<p>将之前的 nginx 删除</p>\n<figure class=\"highlight raw\"><figcaption data-lang=\"\"></figcaption><table><tr><td data-num=\"1\"></td><td><pre>docker kill mynginx -- 杀死 mynginx</pre></td></tr><tr><td data-num=\"2\"></td><td><pre>docker rm mynginx   -- 删除 mynginx</pre></td></tr></table></figure><p><code>将本地配置文件映射到nginx容器</code></p>\n<figure class=\"highlight raw\"><figcaption data-lang=\"\"></figcaption><table><tr><td data-num=\"1\"></td><td><pre>docker run -d --name mynginx -p 8889:80 -v &#x2F;root&#x2F;advanced&#x2F;nginx&#x2F;conf.d:&#x2F;etc&#x2F;nginx&#x2F;conf.d -v &#x2F;root&#x2F;advanced&#x2F;nginx&#x2F;nginx.conf:&#x2F;etc&#x2F;nginx&#x2F;nginx.conf --privileged&#x3D;true nginx</pre></td></tr></table></figure><p><video id=\"mmedia-OILrmMoKexHMSRBg\" controls=true vide=\"video\" src=\"https://1251316161.vod2.myqcloud.com/007a649dvodcq1251316161/18cb667f5285890807929994651/xBwYyNhF3CkA.mp4\" width=\"100%\" ></video></p>\n",
+            "tags": [
+                "Nginx",
+                "Asp.net Core",
+                "Docker",
+                "Nginx"
+            ]
+        },
+        {
             "id": "https://pustea-wls.github.io/2022/07/14/aspnetcore%E8%BF%87%E6%BB%A4%E5%99%A8%E4%B9%8BAuthorizationFilter/",
             "url": "https://pustea-wls.github.io/2022/07/14/aspnetcore%E8%BF%87%E6%BB%A4%E5%99%A8%E4%B9%8BAuthorizationFilter/",
             "title": "aspnetcore过滤器系列五：AuthorizationFilter",
