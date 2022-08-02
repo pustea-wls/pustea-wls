@@ -215,7 +215,7 @@
 &lt;p&gt;&lt;img data-src=&#34;1.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;因为我本地也已经安装过 Docker 了，所以我现在本地尝试一下&lt;/p&gt;
 &lt;h6 id=&#34;生成一个镜像&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#生成一个镜像&#34;&gt;#&lt;/a&gt; 生成一个镜像&lt;/h6&gt;
-&lt;figure class=&#34;highlight raw&#34;&gt;&lt;figcaption data-lang=&#34;&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;docker build -t aspnetcore:v1&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;在这命令就踩了很多坑，最后发现默认生成的 DockFile 文件是在当前这个文件夹下面 (这边没有我已经将他去除)&lt;br /&gt;
+&lt;figure class=&#34;highlight raw&#34;&gt;&lt;figcaption data-lang=&#34;&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;docker build -t aspnetcore:v1 .&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;在这命令就踩了很多坑，最后发现默认生成的 DockFile 文件是在当前这个文件夹下面 (这边没有我已经将他去除)&lt;br /&gt;
 &lt;img data-src=&#34;2.jpg&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
  &lt;code&gt;我们将DockerFile文件向上移动一级和.sln文件同级&lt;/code&gt; 这样就可以成功了&lt;br /&gt;
 &lt;img data-src=&#34;7.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
