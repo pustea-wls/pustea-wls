@@ -16,7 +16,7 @@
         <link rel="alternate" href="https://pustea-wls.github.io/2022/08/25/SignaIR+Vue%E5%AE%9E%E7%8E%B0%E8%81%8A%E5%A4%A9%E5%8A%9F%E8%83%BD/"/>
         <content type="html">&lt;p&gt;记录一下后台使用 SignaIR, 前台使用 Vue 实现一对一的聊天功能&lt;/p&gt;
 &lt;h2 id=&#34;效果展示&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#效果展示&#34;&gt;#&lt;/a&gt; 效果展示&lt;/h2&gt;
-&lt;p&gt;&lt;video id=&#34;mmedia-MyZGjSbPnHRijMnF&#34; controls=true vide=&#34;video&#34; src=&#34;20220825_103842.mp4&#34; width=&#34;100%&#34; &gt;&lt;/video&gt;&lt;/p&gt;
+&lt;p&gt;&lt;video id=&#34;mmedia-eySJvDYkKvOARnpz&#34; controls=true vide=&#34;video&#34; src=&#34;20220825_103842.mp4&#34; width=&#34;100%&#34; &gt;&lt;/video&gt;&lt;/p&gt;
 &lt;h2 id=&#34;signair后端实现&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#signair后端实现&#34;&gt;#&lt;/a&gt; SignaIR 后端实现&lt;/h2&gt;
 &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3huLS1hc3AtdTMzZXY3cjl5eGZ0dnlmZjJwbC5uZXQ=&#34;&gt;后端的环境是 asp.net&lt;/span&gt; core。版本是.net5，ORM 是 EFCore&lt;/p&gt;
 &lt;h3 id=&#34;实现思路&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#实现思路&#34;&gt;#&lt;/a&gt; 实现思路&lt;/h3&gt;
