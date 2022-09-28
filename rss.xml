@@ -67,12 +67,12 @@
 通过 dotnet 命令开启两个程序&lt;/p&gt;
 &lt;figure class=&#34;highlight raw&#34;&gt;&lt;figcaption data-lang=&#34;&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;dotnet DotentCore.Quarzt.Web.dll --urls https:&amp;#x2F;&amp;#x2F;0.0.0.0:50002&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;img data-src=&#34;4.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 &lt;h4 id=&#34;演示非集群&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#演示非集群&#34;&gt;#&lt;/a&gt; 演示非集群&lt;/h4&gt;
-&lt;video id=&#34;mmedia-ukGWNempuvpmcPLo&#34; controls=true vide=&#34;video&#34; src=&#34;20220927_150139.mp4&#34; width=&#34;100%&#34; &gt;&lt;/video&gt;
+&lt;video id=&#34;mmedia-qvQDXhEzbzhnmscF&#34; controls=true vide=&#34;video&#34; src=&#34;20220927_150139.mp4&#34; width=&#34;100%&#34; &gt;&lt;/video&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;font color=&#34;green&#34;&gt;可以看出会出现重复执行，并且一台程序 (服务器) 关闭之后。另外程序 (服务器) 一台并不会自动执行&lt;/font&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h4 id=&#34;演示集群&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#演示集群&#34;&gt;#&lt;/a&gt; 演示集群&lt;/h4&gt;
-&lt;video id=&#34;mmedia-URjOgIAbNnsjHNlE&#34; controls=true vide=&#34;video&#34; src=&#34;20220927_150825.mp4&#34; width=&#34;100%&#34; &gt;&lt;/video&gt;
+&lt;video id=&#34;mmedia-miTnwsEjsOvLaNik&#34; controls=true vide=&#34;video&#34; src=&#34;20220927_150825.mp4&#34; width=&#34;100%&#34; &gt;&lt;/video&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;font color=&#34;green&#34;&gt;可以看出没有出现重复执行，并且一台程序 (服务器) 关闭之后。另外一台程序 (服务器) 开始自动执行，这种机制大大增加了任务调度的容灾性能.&lt;/font&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -211,8 +211,7 @@
  docker run -itd --name authorizationclient --network redis-net -p 5006:80 authorizationserver:v1&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;演示效果&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#演示效果&#34;&gt;#&lt;/a&gt; 演示效果&lt;/h2&gt;
-&lt;p&gt;&lt;video id=&#34;mmedia-hNgYLmyGVNBkjJQe&#34; controls=true vide=&#34;video&#34; src=&#34;20220907_104643.mp4&#34; width=&#34;100%&#34; &gt;&lt;/video&gt;&lt;/p&gt;
- ]]></description>
+&lt;video id=&#34;mmedia-iZLJQqMTWOzAWtbN&#34; controls=true vide=&#34;video&#34; src=&#34;20220907_104643.mp4&#34; width=&#34;100%&#34; &gt;&lt;/video&gt; ]]></description>
         </item>
         <item>
             <guid isPermalink="true">https://pustea-wls.github.io/2022/08/25/SignaIR+Vue%E5%AE%9E%E7%8E%B0%E8%81%8A%E5%A4%A9%E5%8A%9F%E8%83%BD/</guid>
@@ -225,7 +224,7 @@
             <pubDate>Thu, 25 Aug 2022 11:00:00 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;记录一下后台使用 SignaIR, 前台使用 Vue 实现一对一的聊天功能&lt;/p&gt;
 &lt;h2 id=&#34;效果展示&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#效果展示&#34;&gt;#&lt;/a&gt; 效果展示&lt;/h2&gt;
-&lt;p&gt;&lt;video id=&#34;mmedia-MPlMwsdHpBhpcUcW&#34; controls=true vide=&#34;video&#34; src=&#34;20220825_103842.mp4&#34; width=&#34;100%&#34; &gt;&lt;/video&gt;&lt;/p&gt;
+&lt;video id=&#34;mmedia-oNMaQfzhqtjyJepp&#34; controls=true vide=&#34;video&#34; src=&#34;20220825_103842.mp4&#34; width=&#34;100%&#34; &gt;&lt;/video&gt;
 &lt;h2 id=&#34;signair后端实现&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#signair后端实现&#34;&gt;#&lt;/a&gt; SignaIR 后端实现&lt;/h2&gt;
 &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3huLS1hc3AtdTMzZXY3cjl5eGZ0dnlmZjJwbC5uZXQ=&#34;&gt;后端的环境是 asp.net&lt;/span&gt; core。版本是.net5，ORM 是 EFCore&lt;/p&gt;
 &lt;h3 id=&#34;实现思路&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#实现思路&#34;&gt;#&lt;/a&gt; 实现思路&lt;/h3&gt;
@@ -275,7 +274,7 @@
 &lt;h3 id=&#34;重新运行nginx容器&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#重新运行nginx容器&#34;&gt;#&lt;/a&gt; 重新运行 nginx 容器&lt;/h3&gt;
 &lt;p&gt;将之前的 nginx 删除&lt;/p&gt;
 &lt;figure class=&#34;highlight raw&#34;&gt;&lt;figcaption data-lang=&#34;&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;docker kill mynginx -- 杀死 mynginx&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;docker rm mynginx   -- 删除 mynginx&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;code&gt;将本地配置文件映射到nginx容器&lt;/code&gt;&lt;/p&gt;
-&lt;figure class=&#34;highlight raw&#34;&gt;&lt;figcaption data-lang=&#34;&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;docker run -d --name mynginx -p 8889:80 -v &amp;#x2F;root&amp;#x2F;advanced&amp;#x2F;nginx&amp;#x2F;conf.d:&amp;#x2F;etc&amp;#x2F;nginx&amp;#x2F;conf.d -v &amp;#x2F;root&amp;#x2F;advanced&amp;#x2F;nginx&amp;#x2F;nginx.conf:&amp;#x2F;etc&amp;#x2F;nginx&amp;#x2F;nginx.conf --privileged&amp;#x3D;true nginx&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;video id=&#34;mmedia-IfEGuqtxxLSJfNOm&#34; controls=true vide=&#34;video&#34; src=&#34;20220802_101456.mp4&#34; width=&#34;100%&#34; &gt;&lt;/video&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight raw&#34;&gt;&lt;figcaption data-lang=&#34;&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;docker run -d --name mynginx -p 8889:80 -v &amp;#x2F;root&amp;#x2F;advanced&amp;#x2F;nginx&amp;#x2F;conf.d:&amp;#x2F;etc&amp;#x2F;nginx&amp;#x2F;conf.d -v &amp;#x2F;root&amp;#x2F;advanced&amp;#x2F;nginx&amp;#x2F;nginx.conf:&amp;#x2F;etc&amp;#x2F;nginx&amp;#x2F;nginx.conf --privileged&amp;#x3D;true nginx&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;video id=&#34;mmedia-mTLQBwfuYmYUBFNn&#34; controls=true vide=&#34;video&#34; src=&#34;20220802_101456.mp4&#34; width=&#34;100%&#34; &gt;&lt;/video&gt;
  ]]></description>
         </item>
         <item>
