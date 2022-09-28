@@ -27,8 +27,8 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;选择adojobstore实现数据持久化&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#选择adojobstore实现数据持久化&#34;&gt;#&lt;/a&gt; 选择 AdoJobStore 实现数据持久化&lt;/h2&gt;
 &lt;h3 id=&#34;第一步添加数据库&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#第一步添加数据库&#34;&gt;#&lt;/a&gt; 第一步：添加数据库&lt;/h3&gt;
-&lt;p&gt;!(脚本地址)[&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3F1YXJ0em5ldC9xdWFydHpuZXQvdHJlZS9tYWluL2RhdGFiYXNlL3RhYmxlcw==&#34;&gt;https://github.com/quartznet/quartznet/tree/main/database/tables&lt;/span&gt;]&lt;br /&gt;
- 选择自己对应的数据库脚本，我这里选择的是 sqlserver&lt;br /&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3F1YXJ0em5ldC9xdWFydHpuZXQvdHJlZS9tYWluL2RhdGFiYXNlL3RhYmxlcw==&#34;&gt;脚本地址&lt;/span&gt;&lt;br /&gt;
+选择自己对应的数据库脚本，我这里选择的是 sqlserver&lt;br /&gt;
 &lt;img data-src=&#34;2.jpg&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
  执行脚本之后生成表&lt;br /&gt;
 &lt;img data-src=&#34;1.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
@@ -45,12 +45,17 @@
 &lt;img data-src=&#34;3.jpg&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
 通过 dotnet 命令开启两个程序&lt;/p&gt;
 &lt;figure class=&#34;highlight raw&#34;&gt;&lt;figcaption data-lang=&#34;&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;dotnet DotentCore.Quarzt.Web.dll --urls https:&amp;#x2F;&amp;#x2F;0.0.0.0:50002&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;img data-src=&#34;4.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;h3 id=&#34;演示非集群&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#演示非集群&#34;&gt;#&lt;/a&gt; 演示非集群&lt;/h3&gt;
-&lt;p&gt;&lt;video id=&#34;mmedia-XVqSzamIPWeRkEbW&#34; controls=true vide=&#34;video&#34; src=&#34;20220927_150139.mp4&#34; width=&#34;100%&#34; &gt;&lt;/video&gt;&lt;br /&gt;
- 可以看出会出现重复执行，并且一台程序 (服务器) 关闭之后。另外程序 (服务器) 一台并不会自动执行&lt;/p&gt;
-&lt;h3 id=&#34;演示集群&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#演示集群&#34;&gt;#&lt;/a&gt; 演示集群&lt;/h3&gt;
-&lt;p&gt;&lt;video id=&#34;mmedia-UDmBaGYmMkleQXIH&#34; controls=true vide=&#34;video&#34; src=&#34;20220927_150825.mp4&#34; width=&#34;100%&#34; &gt;&lt;/video&gt;&lt;br /&gt;
- 可以看出没有出现重复执行，并且一台程序 (服务器) 关闭之后。另外一台程序 (服务器) 开始自动执行，这种机制大大增加了任务调度的容灾性能。&lt;/p&gt;
+&lt;h4 id=&#34;演示非集群&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#演示非集群&#34;&gt;#&lt;/a&gt; 演示非集群&lt;/h4&gt;
+&lt;p&gt;&lt;video id=&#34;mmedia-tshbhPpqAUWoEsDN&#34; controls=true vide=&#34;video&#34; src=&#34;20220927_150139.mp4&#34; width=&#34;100%&#34; &gt;&lt;/video&gt;&lt;br /&gt;
+ &lt;code&gt;可以看出会出现重复执行，并且一台程序(服务器)关闭之后。另外程序(服务器)一台并不会自动执行&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;演示集群&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#演示集群&#34;&gt;#&lt;/a&gt; 演示集群&lt;/h4&gt;
+&lt;p&gt;&lt;video id=&#34;mmedia-KCNprzyDDsdFcOtl&#34; controls=true vide=&#34;video&#34; src=&#34;20220927_150825.mp4&#34; width=&#34;100%&#34; &gt;&lt;/video&gt;&lt;br /&gt;
+ &lt;code&gt;可以看出没有出现重复执行，并且一台程序(服务器)关闭之后。另外一台程序(服务器)开始自动执行,这种机制大大增加了任务调度的容灾性能。&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;参考文档&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#参考文档&#34;&gt;#&lt;/a&gt; 参考文档&lt;/h3&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vc3ByaW5nc25vdy9wLzEzMTU4NzI2Lmh0bWwjX2xhYmVsNA==&#34;&gt;参考 1&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuYmJzbWF4LmNvbS9BL2tlNWpwbFhYenIv&#34;&gt; 参考 2&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9jbG91ZC50ZW5jZW50LmNvbS9kZXZlbG9wZXIvYXJ0aWNsZS8xNjUwMDk5P2Zyb209MTA2ODA=&#34;&gt; 参考 3&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cucXVhcnR6LXNjaGVkdWxlci5uZXQvZG9jdW1lbnRhdGlvbi8=&#34;&gt; 参考 4&lt;/span&gt;&lt;/p&gt;
 </content>
         <category term="Quartz" scheme="https://pustea-wls.github.io/categories/Quartz/" />
         <category term="Asp.net Core" scheme="https://pustea-wls.github.io/tags/Asp-net-Core/" />
