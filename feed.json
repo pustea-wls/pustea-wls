@@ -7,6 +7,17 @@
     "home_page_url": "https://pustea-wls.github.io",
     "items": [
         {
+            "id": "https://pustea-wls.github.io/2022/12/03/%E9%83%A8%E7%BD%B2%E5%88%B0github%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%8D%A2%E6%88%90%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/",
+            "url": "https://pustea-wls.github.io/2022/12/03/%E9%83%A8%E7%BD%B2%E5%88%B0github%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%8D%A2%E6%88%90%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/",
+            "title": "自定义域名访问博客",
+            "date_published": "2022-12-03T05:00:00.000Z",
+            "content_html": "<h1 id=\"前言\"><a class=\"anchor\" href=\"#前言\">#</a> 前言</h1>\n<blockquote>\n<p><code>最近发现自定义部署到github上面的博客访问不了。想着用自定义域名试一下</code></p>\n</blockquote>\n<h2 id=\"购买一个域名\"><a class=\"anchor\" href=\"#购买一个域名\">#</a> 购买一个域名</h2>\n<p>我是在腾讯云上购买的一个域名，因为之前实名过。所以比较方便 ( <code>需要实名</code> )<br />\n<img data-src=\"1.png\" alt=\"\" /><br />\n 域名上面解析了两条 ip</p>\n<ul>\n<li>解析你的 github 仓库域名 (<span class=\"exturl\" data-url=\"aHR0cDovL3VzZXJuYW1lLmdpdGh1Yi5pbw==\">username.github.io</span>)<br />\n<img data-src=\"4.png\" alt=\"\" /></li>\n<li>添加两条记录 ( <code>注意记录类型.解析ip的是A--185.199.109.153,解析域名的是CNAME--pustea-wls.github.io</code> ) 填写自己对应的值<br />\n<img data-src=\"5.png\" alt=\"\" /></li>\n</ul>\n<h2 id=\"进入github仓库配置自定义域名\"><a class=\"anchor\" href=\"#进入github仓库配置自定义域名\">#</a> 进入 github 仓库配置自定义域名</h2>\n<p><img data-src=\"2.png\" alt=\"\" /><br />\n<img data-src=\"3.png\" alt=\"\" /></p>\n<h2 id=\"访问自定义域名\"><a class=\"anchor\" href=\"#访问自定义域名\">#</a> 访问自定义域名</h2>\n<p>访问之后发现博客的样式失效了 (404 了找不到文件)</p>\n<h3 id=\"解决\"><a class=\"anchor\" href=\"#解决\">#</a> 解决</h3>\n<p>修改_config.yml 文件 <code>将# root: /pustea-wls/ 修改成  root:</code> (个人情况，具体情况具体对待)<br />\n<img data-src=\"6.png\" alt=\"\" /></p>\n",
+            "tags": [
+                "Others",
+                "Others"
+            ]
+        },
+        {
             "id": "https://pustea-wls.github.io/2022/11/09/aspnetcore%E6%8E%88%E6%9D%83%E7%AC%AC%E4%B8%89%E6%96%B9%E8%B4%A6%E5%8F%B7(OAuth2)/",
             "url": "https://pustea-wls.github.io/2022/11/09/aspnetcore%E6%8E%88%E6%9D%83%E7%AC%AC%E4%B8%89%E6%96%B9%E8%B4%A6%E5%8F%B7(OAuth2)/",
             "title": "aspnetcore授权第三方账号(OAuth2)",

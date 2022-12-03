@@ -8,8 +8,39 @@
     <author>
       <name>teapus</name>
     </author>
-    <updated>2022-11-09T06:00:00.000Z</updated>
+    <updated>2022-12-03T05:00:00.000Z</updated>
     <category term=".Net" />
+    <entry>
+        <id>https://pustea-wls.github.io/2022/12/03/%E9%83%A8%E7%BD%B2%E5%88%B0github%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%8D%A2%E6%88%90%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/</id>
+        <title>自定义域名访问博客</title>
+        <link rel="alternate" href="https://pustea-wls.github.io/2022/12/03/%E9%83%A8%E7%BD%B2%E5%88%B0github%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%8D%A2%E6%88%90%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/"/>
+        <content type="html">&lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;最近发现自定义部署到github上面的博客访问不了。想着用自定义域名试一下&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;购买一个域名&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#购买一个域名&#34;&gt;#&lt;/a&gt; 购买一个域名&lt;/h2&gt;
+&lt;p&gt;我是在腾讯云上购买的一个域名，因为之前实名过。所以比较方便 ( &lt;code&gt;需要实名&lt;/code&gt; )&lt;br /&gt;
+&lt;img data-src=&#34;1.png&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
+ 域名上面解析了两条 ip&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;解析你的 github 仓库域名 (&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3VzZXJuYW1lLmdpdGh1Yi5pbw==&#34;&gt;username.github.io&lt;/span&gt;)&lt;br /&gt;
+&lt;img data-src=&#34;4.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;添加两条记录 ( &lt;code&gt;注意记录类型.解析ip的是A--185.199.109.153,解析域名的是CNAME--pustea-wls.github.io&lt;/code&gt; ) 填写自己对应的值&lt;br /&gt;
+&lt;img data-src=&#34;5.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;进入github仓库配置自定义域名&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#进入github仓库配置自定义域名&#34;&gt;#&lt;/a&gt; 进入 github 仓库配置自定义域名&lt;/h2&gt;
+&lt;p&gt;&lt;img data-src=&#34;2.png&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
+&lt;img data-src=&#34;3.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;访问自定义域名&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#访问自定义域名&#34;&gt;#&lt;/a&gt; 访问自定义域名&lt;/h2&gt;
+&lt;p&gt;访问之后发现博客的样式失效了 (404 了找不到文件)&lt;/p&gt;
+&lt;h3 id=&#34;解决&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#解决&#34;&gt;#&lt;/a&gt; 解决&lt;/h3&gt;
+&lt;p&gt;修改_config.yml 文件 &lt;code&gt;将# root: /pustea-wls/ 修改成  root:&lt;/code&gt; (个人情况，具体情况具体对待)&lt;br /&gt;
+&lt;img data-src=&#34;6.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+</content>
+        <category term="Others" scheme="https://pustea-wls.github.io/categories/Others/" />
+        <category term="Others" scheme="https://pustea-wls.github.io/tags/Others/" />
+        <updated>2022-12-03T05:00:00.000Z</updated>
+    </entry>
     <entry>
         <id>https://pustea-wls.github.io/2022/11/09/aspnetcore%E6%8E%88%E6%9D%83%E7%AC%AC%E4%B8%89%E6%96%B9%E8%B4%A6%E5%8F%B7(OAuth2)/</id>
         <title>aspnetcore授权第三方账号(OAuth2)</title>
